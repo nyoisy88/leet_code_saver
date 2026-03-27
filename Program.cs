@@ -1,62 +1,111 @@
-﻿
-namespace TestRunAnything
+namespace TestRunAnything;
+
+static class Program
 {
-    static class Program
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
-        {
-            //string s = "catsanddog";
-            //List<string> wordDict = ["cat", "cats", "and", "sand", "dog"];
+        RunReverseIntegerSolver();
+    }
 
-            SolveReserveInteger();
-        }
+    private static void RunMedianOfTwoSortedArraysSolver()
+    {
+        IProblemSolver<MedianOfTwoSortedArraysInput, double> solver = new MedianOfTwoSortedArraysSolver();
+        MedianOfTwoSortedArraysInput input = new([1, 2], [3, 4]);
+        WriteSolverResult(solver, input);
+    }
 
-        private static void SolveReserveInteger()
+    private static void RunRomanToIntegerSolver()
+    {
+        IProblemSolver<string, int> solver = new RomanToIntegerSolver();
+        RunRepeatableSolver(solver, "Enter Roman numeral: ", ReadRequiredLine);
+    }
+
+    private static void RunStringToIntegerAtoiSolver()
+    {
+        IProblemSolver<string, int> solver = new StringToIntegerAtoiSolver();
+        RunRepeatableSolver(solver, "Enter string: ", ReadRequiredLine);
+    }
+
+    private static void RunReverseIntegerSolver()
+    {
+        IProblemSolver<int, int> solver = new ReverseIntegerSolver();
+        RunRepeatableSolver(solver, "Enter Int Number to reverse: ", ReadIntLine);
+    }
+
+    private static void RunPalindromeNumber()
+    {
+        IProblemSolver<int, bool> solver = new PalindromeNumberSolver();
+        RunSolverOnce(solver, "Enter number to check: ", ReadIntLine);
+    }
+
+    private static void RunWordLadder()
+    {
+        IProblemSolver<WordLadderInput, int> solver = new WordLadderSolver();
+        WordLadderInput input = new("hit", "cog", ["hot", "dot", "dog", "lot", "log", "cog"]);
+        WriteSolverResult(solver, input);
+    }
+
+    private static void RunRepeatableSolver<TInput, TOutput>(
+        IProblemSolver<TInput, TOutput> solver,
+        string prompt,
+        Func<string, TInput> readInput)
+    {
+        while (true)
         {
-            do
+            TInput input = readInput(prompt);
+            WriteSolverResult(solver, input);
+
+            if (ShouldStop())
             {
-                int x = ReadIntLine();
-                int rev = Medium.ReserveInteger(x);
-                Console.WriteLine($"Reserve Integer: {rev}");
-            } while (Console.ReadKey().Key != ConsoleKey.Escape);
-        }
-
-        private static void RunPalindromeNumber()
-        {
-            PalindromeNumber_Easy palindrome = new PalindromeNumber_Easy();
-            string? input = null;
-            while (string.IsNullOrEmpty(input))
-            {
-                input = Console.ReadLine();
+                break;
             }
-            int x = int.Parse(input);
-            Console.WriteLine(palindrome.IsPalindrome(x));
+
+            Console.WriteLine();
         }
+    }
 
-        static void RunWordLadder()
+    private static void RunSolverOnce<TInput, TOutput>(
+        IProblemSolver<TInput, TOutput> solver,
+        string prompt,
+        Func<string, TInput> readInput)
+    {
+        TInput input = readInput(prompt);
+        WriteSolverResult(solver, input);
+    }
+
+    private static void WriteSolverResult<TInput, TOutput>(IProblemSolver<TInput, TOutput> solver, TInput input)
+    {
+        Console.WriteLine($"{solver.Name}: {solver.Solve(input)}");
+    }
+
+    private static bool ShouldStop()
+    {
+        return Console.ReadKey(true).Key == ConsoleKey.Escape;
+    }
+
+    private static string ReadRequiredLine(string prompt)
+    {
+        while (true)
         {
-            string start = "hit", end = "cog";
-            string[] wordList = ["hot", "dot", "dog", "lot", "log", "cog"];
-            WordLadder wordLadder = new WordLadder();
-            int result = wordLadder.LadderLength(start, end, wordList.ToList());
-
-            Console.WriteLine(result);
-        }
-
-        static int ReadIntLine()
-        {
-            string? input = null;
-            while (string.IsNullOrEmpty(input))
+            Console.Write(prompt);
+            string? input = Console.ReadLine();
+            if (!string.IsNullOrWhiteSpace(input))
             {
-                Console.Write("Enter Int: ");
-                input = Console.ReadLine();
-                if (int.TryParse(input, out int x))
-                {
-                    return x;
-                }
-                input = null;
+                return input;
             }
-            return 0;
+        }
+    }
+
+    private static int ReadIntLine(string prompt)
+    {
+        while (true)
+        {
+            Console.Write(prompt);
+            string? input = Console.ReadLine();
+            if (int.TryParse(input, out int value))
+            {
+                return value;
+            }
         }
     }
 }
