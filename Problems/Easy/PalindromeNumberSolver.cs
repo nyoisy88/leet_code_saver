@@ -2,7 +2,7 @@ namespace TestRunAnything;
 
 public sealed class PalindromeNumberSolver : IProblemSolver<int, bool>
 {
-    public string Name => "Palindrome Number";
+    public string Name => "#9. Palindrome Number";
 
     public bool Solve(int value)
     {

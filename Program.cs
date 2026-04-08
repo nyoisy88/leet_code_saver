@@ -4,11 +4,8 @@ static class Program
 {
     static void Main(string[] args)
     {
-        var zigzagSolver = new ZigzagConversionSolver();
-        ZigzagConversionInput input = new(
-            S: "PAYPALISHIRING", NumRows: 3
-        );
-        WriteSolverResult(zigzagSolver, input);
+        var solver = new IntegerToRomanSolver();
+        WriteSolverResult( solver, 3749);
     }
 
     private static void RunMedianOfTwoSortedArraysSolver()

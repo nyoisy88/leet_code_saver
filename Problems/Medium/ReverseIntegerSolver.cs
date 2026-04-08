@@ -2,7 +2,7 @@ namespace TestRunAnything;
 
 public sealed class ReverseIntegerSolver : IProblemSolver<int, int>
 {
-    public string Name => "Reverse Integer";
+    public string Name => "#7. Reverse Integer";
 
     public int Solve(int value)
     {

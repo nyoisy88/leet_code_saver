@@ -2,7 +2,7 @@ namespace TestRunAnything;
 
 public sealed class StringToIntegerAtoiSolver : IProblemSolver<string, int>
 {
-    public string Name => "String To Integer (atoi)";
+    public string Name => "#8. String To Integer (atoi)";
 
     public int Solve(string input)
     {
