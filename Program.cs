@@ -4,8 +4,9 @@ static class Program
 {
     static void Main(string[] args)
     {
-        var solver = new IntegerToRomanSolver();
-        WriteSolverResult( solver, 3749);
+        // Test three sum solver
+        var solver = new ThreeSumSolver();
+        WriteSolverResult(solver, [-1,-1,-1,-1, 0, 1, 2, -1,-1,-1, -4]);
     }
 
     private static void RunMedianOfTwoSortedArraysSolver()

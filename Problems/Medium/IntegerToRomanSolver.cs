@@ -1,5 +1,4 @@
 namespace TestRunAnything;
-
 public sealed class IntegerToRomanSolver : IProblemSolver<int, string>
 {
     public string Name => "#12. Integer to Roman";
