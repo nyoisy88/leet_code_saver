@@ -1,4 +1,6 @@
-namespace TestRunAnything;
+using TestRunAnything.Contracts;
+
+namespace TestRunAnything.Problems.Medium;
 public sealed class IntegerToRomanSolver : IProblemSolver<int, string>
 {
     public string Name => "#12. Integer to Roman";

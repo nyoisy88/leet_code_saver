@@ -1,4 +1,6 @@
-namespace TestRunAnything;
+using TestRunAnything.Contracts;
+
+namespace TestRunAnything.Problems.Medium;
 
 public sealed class StringToIntegerAtoiSolver : IProblemSolver<string, int>
 {

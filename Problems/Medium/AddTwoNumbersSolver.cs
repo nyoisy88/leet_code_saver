@@ -1,4 +1,7 @@
-namespace TestRunAnything;
+using TestRunAnything.Common;
+using TestRunAnything.Contracts;
+
+namespace TestRunAnything.Problems.Medium;
 
 public sealed record AddTwoNumbersInput(ListNode? Left, ListNode? Right);
 

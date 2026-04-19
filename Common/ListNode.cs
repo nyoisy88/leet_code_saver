@@ -1,4 +1,4 @@
-namespace TestRunAnything;
+namespace TestRunAnything.Common;
 
 public sealed class ListNode
 {

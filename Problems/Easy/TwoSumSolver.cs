@@ -1,5 +1,6 @@
-namespace TestRunAnything;
+using TestRunAnything.Contracts;
 
+namespace TestRunAnything.Problems.Easy;
 public sealed record TwoSumInput(int[] Numbers, int Target);
 
 public sealed class TwoSumSolver : IProblemSolver<TwoSumInput, int[]>

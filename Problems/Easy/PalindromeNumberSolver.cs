@@ -1,4 +1,6 @@
-namespace TestRunAnything;
+using TestRunAnything.Contracts;
+
+namespace TestRunAnything.Problems.Easy;
 
 public sealed class PalindromeNumberSolver : IProblemSolver<int, bool>
 {

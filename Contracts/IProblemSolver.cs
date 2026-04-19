@@ -1,4 +1,4 @@
-namespace TestRunAnything;
+namespace TestRunAnything.Contracts;
 
 public interface IProblemSolver<in TInput, out TOutput>
 {

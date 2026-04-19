@@ -1,6 +1,7 @@
 using System.Text;
+using TestRunAnything.Contracts;
 
-namespace TestRunAnything;
+namespace TestRunAnything.Problems.Medium;
 
 public sealed record ZigzagConversionInput(string S, int NumRows);
 public sealed class ZigzagConversionSolver : IProblemSolver<ZigzagConversionInput, string>

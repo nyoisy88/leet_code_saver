@@ -1,4 +1,6 @@
-namespace TestRunAnything;
+using TestRunAnything.Contracts;
+
+namespace TestRunAnything.Problems.Medium;
 public sealed class LongestPalindromeSubstringSolver : IProblemSolver<string, string>
 {
     public string Name => "#5. Longest Palindrome Substring";

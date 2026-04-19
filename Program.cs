@@ -1,26 +1,34 @@
+using TestRunAnything.Contracts;
+using TestRunAnything.Problems.Easy;
+using TestRunAnything.Problems.Hard;
+using TestRunAnything.Problems.Medium;
+
 namespace TestRunAnything;
 
 static class Program
 {
     static void Main(string[] args)
     {
-        // Test three sum solver
-        var solver = new ThreeSumSolver();
-        WriteSolverResult(solver, [-1,-1,-1,-1, 0, 1, 2, -1,-1,-1, -4]);
+        RunCombinationSumSolver();
     }
 
-    private static void RunMedianOfTwoSortedArraysSolver()
-    {
-        IProblemSolver<MedianOfTwoSortedArraysInput, double> solver = new MedianOfTwoSortedArraysSolver();
-        MedianOfTwoSortedArraysInput input = new([1, 2], [3, 4]);
-        WriteSolverResult(solver, input);
-    }
+    #region Easy
 
     private static void RunRomanToIntegerSolver()
     {
         IProblemSolver<string, int> solver = new RomanToIntegerSolver();
         RunRepeatableSolver(solver, "Enter Roman numeral: ", ReadRequiredLine);
     }
+
+    private static void RunPalindromeNumber()
+    {
+        IProblemSolver<int, bool> solver = new PalindromeNumberSolver();
+        RunSolverOnce(solver, "Enter number to check: ", ReadIntLine);
+    }
+
+    #endregion
+
+    #region Medium
 
     private static void RunStringToIntegerAtoiSolver()
     {
@@ -34,10 +42,37 @@ static class Program
         RunRepeatableSolver(solver, "Enter Int Number to reverse: ", ReadIntLine);
     }
 
-    private static void RunPalindromeNumber()
+    // #17. Letter Combinations of a Phone Number
+    private static void RunLetterCombinationsOfAPhoneNumberSolver()
     {
-        IProblemSolver<int, bool> solver = new PalindromeNumberSolver();
-        RunSolverOnce(solver, "Enter number to check: ", ReadIntLine);
+        IProblemSolver<string, LetterCombinationsOfAPhoneNumberOutput> solver = new LetterCombinationsOfAPhoneNumberSolver();
+        RunRepeatableSolver(solver, "Enter digits: ", ReadRequiredLine);
+    }
+
+    // #22. Generate Parentheses
+    private static void RunGenerateParenthesesSolver()
+    {
+        IProblemSolver<int, GenerateParenthesesOutput> solver = new GenerateParenthesesSolver();
+        RunRepeatableSolver(solver, "Enter n: ", ReadIntLine);
+    }
+
+    // #39. Combination Sum
+    private static void RunCombinationSumSolver()
+    {
+        IProblemSolver<CombinationSumInput, CombinationSumOutput> solver = new CombinationSumSolver();
+        CombinationSumInput input = new([2, 3, 6, 7], 7);
+        WriteSolverResult(solver, input);
+    }
+
+    #endregion
+
+    #region Hard
+
+    private static void RunMedianOfTwoSortedArraysSolver()
+    {
+        IProblemSolver<MedianOfTwoSortedArraysInput, double> solver = new MedianOfTwoSortedArraysSolver();
+        MedianOfTwoSortedArraysInput input = new([1, 2], [3, 4]);
+        WriteSolverResult(solver, input);
     }
 
     private static void RunWordLadder()
@@ -46,6 +81,8 @@ static class Program
         WordLadderInput input = new("hit", "cog", ["hot", "dot", "dog", "lot", "log", "cog"]);
         WriteSolverResult(solver, input);
     }
+
+    #endregion
 
     private static void RunRepeatableSolver<TInput, TOutput>(
         IProblemSolver<TInput, TOutput> solver,

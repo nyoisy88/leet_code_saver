@@ -1,4 +1,6 @@
-namespace TestRunAnything;
+using TestRunAnything.Contracts;
+
+namespace TestRunAnything.Problems.Medium;
 
 public sealed record ThreeSumClosestInput(int[] nums, int target);
 public sealed class ThreeSumClosestSolver : IProblemSolver<ThreeSumClosestInput, int>

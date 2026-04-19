@@ -1,4 +1,6 @@
-namespace TestRunAnything;
+using TestRunAnything.Contracts;
+
+namespace TestRunAnything.Problems.Medium;
 
 public sealed record ThreeSumOutput(IList<IList<int>> output)
 {

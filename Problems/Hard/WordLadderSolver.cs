@@ -1,4 +1,6 @@
-namespace TestRunAnything;
+using TestRunAnything.Contracts;
+
+namespace TestRunAnything.Problems.Hard;
 
 public sealed record WordLadderInput(string BeginWord, string EndWord, IList<string> WordList);
 
